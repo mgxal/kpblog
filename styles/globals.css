@@ -1,0 +1,45 @@
+:root {
+  --bg: #0f0f0f;
+  --text: #eaeaea;
+  --muted: #8a8a8a;
+  --border: #2a2a2a;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--text);
+  text-decoration: underline;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+
+h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-top: 60px;
+  font-size: 22px;
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 14px;
+}

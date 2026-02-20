@@ -1,47 +1,32 @@
-# Astro Starter Kit: Basics
+Krystian Śpiewak
 
-```sh
-npm create astro@latest -- --template basics
-```
+DevOps Engineer  
+Infrastructure Automation | Kubernetes | OpenShift | Linux | Cloud Networking
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-## 🚀 Project Structure
+## Portfolio
 
-Inside of your Astro project, you'll see the following folders and files:
+Buduję i automatyzuję infrastrukturę.
+Projektuję środowiska Kubernetes i OpenShift.
+Optymalizuję sieć w chmurze.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+Skupiam się na Platform Engineering i standaryzacji środowisk dla zespołów developerskich.
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+---
 
-## 🧞 Commands
+## Blog
 
-All commands are run from the root of the project, from a terminal:
+DevOps na co dzień.
+Inwestor po godzinach.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Analizuję spółki, buduję tezy inwestycyjne i dokumentuję decyzje.
+To mój dziennik finansowy.
 
-## 👀 Want to learn more?
+Bez hype'u.
+Bez narracji pod sentyment rynku.
+Tylko proces.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-# kpblog
+---
+
+Blog nie stanowi porady inwestyjnej.
