@@ -8,22 +8,60 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+
+    <script>
+      const theme = localStorage.getItem("theme");
+
+      if (
+        theme === "dark" ||
+        (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
   </head>
 
   <body>
-    <nav>
-      <a href="/blog">blog</a>
-    </nav>
+    <header>
+      <div class="left">
+        <a href="/" class="brand">Krystian Spiewak</a>
+      </div>
+
+      <div class="right">
+        <button id="theme-toggle">light / dark</button>
+        <a href="/blog">blog</a>
+      </div>
+    </header>
 
     <main>
       <slot />
     </main>
+
+    <script>
+      const toggle = document.getElementById("theme-toggle");
+
+      toggle.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+
+        if (document.documentElement.classList.contains("dark")) {
+          localStorage.setItem("theme", "dark");
+        } else {
+          localStorage.setItem("theme", "light");
+        }
+      });
+    </script>
   </body>
 </html>
 
 <style global>
   :root {
-    --bg: #000;
+    --bg: #ffffff;
+    --text: #111111;
+    --muted: #666;
+  }
+
+  .dark {
+    --bg: #000000;
     --text: #e5e5e5;
     --muted: #777;
   }
@@ -40,21 +78,50 @@ const { title } = Astro.props;
     margin: 120px auto;
     padding: 0 24px;
     line-height: 1.7;
+    transition: background 0.2s ease, color 0.2s ease;
   }
 
-  nav {
+  header {
     position: fixed;
     top: 40px;
+    left: 60px;
     right: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  nav a {
+  .right {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .brand {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  button {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-family: inherit;
+    cursor: pointer;
+  }
+
+  button:hover {
+    color: var(--text);
+  }
+
+  a {
     color: var(--muted);
     text-decoration: none;
   }
 
-  nav a:hover {
-    color: white;
+  a:hover {
+    color: var(--text);
   }
 
   h1 {
@@ -83,14 +150,13 @@ const { title } = Astro.props;
     margin: 8px 0;
   }
 
-  a {
-    color: white;
-    text-decoration: underline;
-  }
-
   hr {
     border: none;
-    border-top: 1px solid #222;
+    border-top: 1px solid #ddd;
     margin: 80px 0;
+  }
+
+  .dark hr {
+    border-top: 1px solid #222;
   }
 </style>
