@@ -11,7 +11,6 @@ const { title } = Astro.props;
 
     <script>
       const theme = localStorage.getItem("theme");
-
       if (
         theme === "dark" ||
         (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)
@@ -22,20 +21,20 @@ const { title } = Astro.props;
   </head>
 
   <body>
-    <header>
-      <div class="left">
+    <div class="container">
+      <header>
         <a href="/" class="brand">Krystian Spiewak</a>
-      </div>
 
-      <div class="right">
-        <button id="theme-toggle">light / dark</button>
-        <a href="/blog">blog</a>
-      </div>
-    </header>
+        <div class="nav-right">
+          <button id="theme-toggle" aria-label="Toggle theme">◐</button>
+          <a href="/blog">blog</a>
+        </div>
+      </header>
 
-    <main>
-      <slot />
-    </main>
+      <main>
+        <slot />
+      </main>
+    </div>
 
     <script>
       const toggle = document.getElementById("theme-toggle");
@@ -58,12 +57,14 @@ const { title } = Astro.props;
     --bg: #ffffff;
     --text: #111111;
     --muted: #666;
+    --border: #e5e5e5;
   }
 
   .dark {
     --bg: #000000;
     --text: #e5e5e5;
     --muted: #777;
+    --border: #222;
   }
 
   * {
@@ -71,30 +72,24 @@ const { title } = Astro.props;
   }
 
   body {
+    margin: 0;
     background: var(--bg);
     color: var(--text);
     font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-    max-width: 900px;
-    margin: 120px auto;
-    padding: 0 24px;
-    line-height: 1.7;
     transition: background 0.2s ease, color 0.2s ease;
   }
 
+  .container {
+    max-width: 900px;
+    margin: 80px auto;
+    padding: 0 24px;
+  }
+
   header {
-    position: fixed;
-    top: 40px;
-    left: 60px;
-    right: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-
-  .right {
-    display: flex;
-    gap: 24px;
-    align-items: center;
+    margin-bottom: 100px;
   }
 
   .brand {
@@ -103,12 +98,18 @@ const { title } = Astro.props;
     font-weight: 600;
   }
 
+  .nav-right {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
   button {
     background: none;
     border: none;
-    color: var(--muted);
-    font-family: inherit;
     cursor: pointer;
+    color: var(--muted);
+    font-size: 1rem;
   }
 
   button:hover {
@@ -116,8 +117,8 @@ const { title } = Astro.props;
   }
 
   a {
-    color: var(--muted);
     text-decoration: none;
+    color: var(--muted);
   }
 
   a:hover {
@@ -132,7 +133,7 @@ const { title } = Astro.props;
   h2 {
     margin-top: 80px;
     margin-bottom: 20px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--muted);
   }
 
@@ -152,11 +153,7 @@ const { title } = Astro.props;
 
   hr {
     border: none;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid var(--border);
     margin: 80px 0;
-  }
-
-  .dark hr {
-    border-top: 1px solid #222;
   }
 </style>
