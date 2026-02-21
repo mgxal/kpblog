@@ -1,18 +1,105 @@
 ---
+const skiResorts = [
+  {
+    name: "Schmittenhöhe (Zell am See)",
+    distance: "ok. 2 km",
+    slopes: "ok. 74 km",
+    profile: "głównie niebieskie i czerwone",
+    highlights: [
+      "Widok na jezioro Zeller See",
+      "Bezpośredni dostęp z miasta",
+      "Punkty panoramiczne"
+    ]
+  },
+  {
+    name: "Kitzsteinhorn (Kaprun)",
+    distance: "ok. 10 min",
+    slopes: "lodowiec, >3000 m",
+    profile: "10% niebieskie / 70% czerwone / 20% czarne",
+    highlights: [
+      "Platforma widokowa Top of Salzburg",
+      "Długi sezon śniegowy",
+      "Kilka stacji wjazdowych"
+    ]
+  },
+  {
+    name: "Saalbach-Hinterglemm-Leogang-Fieberbrunn",
+    distance: "ok. 20–30 min",
+    slopes: "ok. 220 km",
+    profile: "20% niebieskie / 60% czerwone / 20% czarne",
+    highlights: [
+      "Rozległy system połączonych tras",
+      "Transport gondolami",
+      "Długie zjazdy dolinne"
+    ]
+  }
+];
+
+const sightseeing = [
+  {
+    name: "Salzburg",
+    items: [
+      "Stare Miasto (UNESCO)",
+      "Twierdza Hohensalzburg",
+      "Ogrody Mirabell",
+      "Getreidegasse"
+    ]
+  },
+  {
+    name: "Burg Hohenwerfen",
+    items: [
+      "Średniowieczny zamek",
+      "Muzeum",
+      "Platformy widokowe"
+    ]
+  },
+  {
+    name: "Region Hochkönig",
+    items: [
+      "Alpejskie doliny",
+      "Punkty widokowe",
+      "Trasy spacerowe"
+    ]
+  }
+];
+---
 import Base from '../layouts/Base.astro';
 ---
+<section>
+  <h1>Plan wyjazdu – Zell am See</h1>
 
-<Base title="Plan">
-  <h1>Personal Roadmap</h1>
+  <h2>Ośrodki narciarskie</h2>
+  {skiResorts.map(resort => (
+    <div>
+      <h3>{resort.name}</h3>
+      <p><strong>Odległość:</strong> {resort.distance}</p>
+      <p><strong>Długość / wysokość:</strong> {resort.slopes}</p>
+      <p><strong>Profil tras:</strong> {resort.profile}</p>
+      <ul>
+        {resort.highlights.map(item => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </div>
+  ))}
 
-  <p>
-    Internal development plan.
-  </p>
+  <h2>Dodatkowe miejsca</h2>
+  {sightseeing.map(place => (
+    <div>
+      <h3>{place.name}</h3>
+      <ul>
+        {place.items.map(item => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </div>
+  ))}
 
+  <h2>Plan orientacyjny</h2>
   <ul>
-    <li>Deepen Kubernetes internals knowledge</li>
-    <li>Build internal platform automation tools</li>
-    <li>Contribute to open-source networking tooling</li>
-    <li>Achieve advanced cloud certification</li>
+    <li>Dzień 1 – Schmittenhöhe</li>
+    <li>Dzień 2 – Kitzsteinhorn</li>
+    <li>Dzień 3–4 – Saalbach</li>
+    <li>Dzień 5 (opcjonalnie) – wybrany ośrodek lub dzień przerwy</li>
   </ul>
-</Base>
+</section>
