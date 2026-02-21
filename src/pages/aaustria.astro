@@ -1,105 +1,190 @@
 ---
-const skiResorts = [
+import Base from '../layouts/Base.astro';
+
+const skiPlan = [
   {
-    name: "Schmittenhöhe (Zell am See)",
-    distance: "ok. 2 km",
-    slopes: "ok. 74 km",
+    region: "Zell am See – Schmittenhöhe",
+    distance: "ok. 2 km od noclegu",
+    slopes: "ok. 74 km tras",
     profile: "głównie niebieskie i czerwone",
-    highlights: [
+    notes: [
       "Widok na jezioro Zeller See",
-      "Bezpośredni dostęp z miasta",
-      "Punkty panoramiczne"
+      "Bezpośredni start z miasta",
+      "Dobry punkt na pierwszy dzień",
+      "Możliwość zejścia do centrum pieszo po jeździe"
     ]
   },
   {
-    name: "Kitzsteinhorn (Kaprun)",
-    distance: "ok. 10 min",
-    slopes: "lodowiec, >3000 m",
+    region: "Kaprun – Kitzsteinhorn",
+    distance: "ok. 10 min samochodem",
+    slopes: "lodowiec, ponad 3000 m",
     profile: "10% niebieskie / 70% czerwone / 20% czarne",
-    highlights: [
+    notes: [
+      "Stałe warunki śniegowe",
       "Platforma widokowa Top of Salzburg",
-      "Długi sezon śniegowy",
-      "Kilka stacji wjazdowych"
+      "Długie, bardziej strome odcinki",
+      "Możliwość połączenia z wizytą przy zbiornikach Mooserboden (sezonowo)"
     ]
   },
   {
-    name: "Saalbach-Hinterglemm-Leogang-Fieberbrunn",
+    region: "Saalbach-Hinterglemm-Leogang-Fieberbrunn",
     distance: "ok. 20–30 min",
-    slopes: "ok. 220 km",
+    slopes: "ok. 220 km tras",
     profile: "20% niebieskie / 60% czerwone / 20% czarne",
-    highlights: [
-      "Rozległy system połączonych tras",
-      "Transport gondolami",
-      "Długie zjazdy dolinne"
+    notes: [
+      "Duży, połączony system tras",
+      "Transport głównie gondolami",
+      "Długie zjazdy dolinne",
+      "Możliwość objazdu dużej części kompleksu w jeden dzień"
     ]
   }
 ];
 
-const sightseeing = [
+const placesNearby = [
   {
-    name: "Salzburg",
+    name: "Zell am See",
+    items: [
+      "Spacer wokół jeziora Zeller See",
+      "Starówka i promenada",
+      "Kaplica św. Hipolita",
+      "Rejs po jeziorze (sezonowo)"
+    ]
+  },
+  {
+    name: "Kaprun",
+    items: [
+      "Zamek Kaprun",
+      "Zbiorniki wysokogórskie Mooserboden",
+      "Wąwóz Sigmund-Thun-Klamm"
+    ]
+  },
+  {
+    name: "Saalbach / Hinterglemm",
+    items: [
+      "Centra miejscowości",
+      "Trasy spacerowe w dolinie",
+      "Punkty widokowe w kierunku Tyrolu"
+    ]
+  },
+  {
+    name: "Salzburg (ok. 1,5 h)",
     items: [
       "Stare Miasto (UNESCO)",
       "Twierdza Hohensalzburg",
       "Ogrody Mirabell",
-      "Getreidegasse"
+      "Getreidegasse",
+      "Dom Mozarta"
     ]
   },
   {
-    name: "Burg Hohenwerfen",
+    name: "Burg Hohenwerfen (ok. 1 h)",
     items: [
-      "Średniowieczny zamek",
-      "Muzeum",
-      "Platformy widokowe"
+      "Średniowieczny zamek na skale",
+      "Ekspozycja historyczna",
+      "Platformy widokowe",
+      "Pokazy sokolnicze (sezonowo)"
     ]
   },
   {
     name: "Region Hochkönig",
     items: [
       "Alpejskie doliny",
-      "Punkty widokowe",
-      "Trasy spacerowe"
+      "Panoramy masywu Hochkönig",
+      "Trasy widokowe",
+      "Małe miejscowości alpejskie"
+    ]
+  }
+];
+
+const returnStops = [
+  {
+    name: "Brno",
+    items: [
+      "Zamek Špilberk",
+      "Katedra św. Piotra i Pawła",
+      "Willa Tugendhat (UNESCO)",
+      "Starówka"
+    ]
+  },
+  {
+    name: "Ostrawa",
+    items: [
+      "Kompleks Dolní Vítkovice",
+      "Wieża Bolt Tower",
+      "Stara kopalnia – teren postindustrialny",
+      "Kawiarnie w strefie przemysłowej"
     ]
   }
 ];
 ---
-import Base from '../layouts/Base.astro';
----
-<section>
-  <h1>Plan wyjazdu – Zell am See</h1>
 
-  <h2>Ośrodki narciarskie</h2>
-  {skiResorts.map(resort => (
-    <div>
-      <h3>{resort.name}</h3>
-      <p><strong>Odległość:</strong> {resort.distance}</p>
-      <p><strong>Długość / wysokość:</strong> {resort.slopes}</p>
-      <p><strong>Profil tras:</strong> {resort.profile}</p>
-      <ul>
-        {resort.highlights.map(item => (
-          <li>{item}</li>
-        ))}
-      </ul>
-    </div>
-  ))}
+<Base title="Plan">
+  <h1>Plan wyjazdu – Zell am See i okolice</h1>
 
-  <h2>Dodatkowe miejsca</h2>
-  {sightseeing.map(place => (
-    <div>
-      <h3>{place.name}</h3>
-      <ul>
-        {place.items.map(item => (
-          <li>{item}</li>
-        ))}
-      </ul>
-    </div>
-  ))}
+  <section>
+    <h2>Baza noclegowa</h2>
+    <ul>
+      <li>Piątek → Sobota: Teisendorf (Bawaria)</li>
+      <li>Niedziela → Piątek: Zell am See</li>
+    </ul>
+  </section>
 
-  <h2>Plan orientacyjny</h2>
-  <ul>
-    <li>Dzień 1 – Schmittenhöhe</li>
-    <li>Dzień 2 – Kitzsteinhorn</li>
-    <li>Dzień 3–4 – Saalbach</li>
-    <li>Dzień 5 (opcjonalnie) – wybrany ośrodek lub dzień przerwy</li>
-  </ul>
-</section>
+  <section>
+    <h2>Ośrodki narciarskie</h2>
+
+    {skiPlan.map(resort => (
+      <div>
+        <h3>{resort.region}</h3>
+        <p><strong>Odległość:</strong> {resort.distance}</p>
+        <p><strong>Długość / wysokość:</strong> {resort.slopes}</p>
+        <p><strong>Profil tras:</strong> {resort.profile}</p>
+        <ul>
+          {resort.notes.map(note => (
+            <li>{note}</li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </section>
+
+  <section>
+    <h2>Miejsca do zobaczenia w okolicy</h2>
+
+    {placesNearby.map(place => (
+      <div>
+        <h3>{place.name}</h3>
+        <ul>
+          {place.items.map(item => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </section>
+
+  <section>
+    <h2>Propozycja organizacji wyjazdu</h2>
+    <ul>
+      <li>Rozpoczęcie jazdy w Zell am See (blisko noclegu).</li>
+      <li>Jeden dzień na lodowcu Kitzsteinhorn.</li>
+      <li>Minimum jeden pełny dzień w Saalbach (objazd większej części kompleksu).</li>
+      <li>Dodatkowy dzień w wybranym ośrodku – w zależności od warunków.</li>
+      <li>Jedno popołudnie lub dzień przeznaczyć na Salzburg lub Hohenwerfen.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Przystanki w drodze powrotnej (opcjonalnie)</h2>
+
+    {returnStops.map(stop => (
+      <div>
+        <h3>{stop.name}</h3>
+        <ul>
+          {stop.items.map(item => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </section>
+</Base>
