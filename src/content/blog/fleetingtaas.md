@@ -21,71 +21,75 @@ A long-living repository for Stage
 This process should be automated outside of TaaS itself but executed within a clean, properly structured environment — following the KISS principle.
 The final phase mirrors a traditional merge-and-release process. Once the Stage version has been tested and validated, it becomes the source of truth for Production. The system then creates new mirrors based on the Stage-tested artifacts and promotes them into Production.
 
-┌──────────────────────────────┐
-│          DEVELOPER           │
-└───────────────┬──────────────┘
-                │
-                ▼
-        ┌───────────────┐
-        │  Pull Request │
-        └───────┬───────┘
-                │
-                ▼
-        ┌───────────────┐
-        │    CI Build   │
-        └───────┬───────┘
-                │
-                ▼
-        ┌──────────────────────┐
-        │ Build Container Image│
-        └──────────┬───────────┘
-                   │
-                   ▼
-        ┌──────────────────────┐
-        │ Update GitOps Repo   │
-        └──────────┬───────────┘
-                   │
-                   ▼
-        ┌──────────────────────┐
-        │      ArgoCD Sync     │
-        └──────────┬───────────┘
-                   │
-                   ▼
-        ┌────────────────────────────┐
-        │ DEV Environment            │
-        │ (Ephemeral Image Repo)     │
-        └──────────┬─────────────────┘
-                   │
-                   │  Propagator
-                   │  Snapshot → Tag
-                   ▼
-        ┌────────────────────────────┐
-        │ Stage Branch (GitOps)      │
-        └──────────┬─────────────────┘
-                   │
-                   ▼
-        ┌────────────────────────────┐
-        │ Stage Image Repository     │
-        │ (Long-Living)              │
-        └──────────┬─────────────────┘
-                   │
-                   ▼
-        ┌────────────────────────────┐
-        │ STAGE Environment          │
-        └──────────┬─────────────────┘
-                   │
-                   │ Validated Promotion
-                   ▼
-        ┌────────────────────────────┐
-        │ Production Branch (GitOps) │
-        └──────────┬─────────────────┘
-                   │
-                   ▼
-        ┌────────────────────────────┐
-        │ Production Image Mirror    │
-        └──────────┬─────────────────┘
-                   │
-                   ▼
-        ┌────────────────────────────┐
-        │ PRODUCTION Environment     │
-        └────────────────────────────┘
+
+
+```
++---------------------------+
+|         DEVELOPER         |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|       Pull Request        |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|         CI Build          |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|   Build Container Image   |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|     Update GitOps Repo    |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|        ArgoCD Sync        |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|     DEV Environment       |
+|  (Ephemeral Image Repo)   |
++-------------+-------------+
+              |
+              |  Propagator
+              |  Snapshot → Tag
+              v
++---------------------------+
+|   Stage Branch (GitOps)   |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|   Stage Image Repository  |
+|      (Long-Living)        |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|     STAGE Environment     |
++-------------+-------------+
+              |
+              |  Validated Promotion
+              v
++---------------------------+
+| Production Branch (GitOps)|
++-------------+-------------+
+              |
+              v
++---------------------------+
+|  Production Image Mirror  |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|   PRODUCTION Environment  |
++---------------------------+
+```
