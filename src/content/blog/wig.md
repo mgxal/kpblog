@@ -2,7 +2,7 @@
 
 title: "WIG - Looking forward"
 description: "WIG - Road to COS"
-date: 2026-02-25
+date: 2026-03-29
 ----------------
 
 Trying to answer the question: "Does WIG have an ability to rise in a logarithmic way, or is it just another journey following a COS/SIN curve?"
